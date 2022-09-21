@@ -1,9 +1,12 @@
 export default function Example({ words }) {
   return (
     <div className='mx-4'>
-      <h2 className='text-2xl font-bold mb-4 text-center'>
+      <h2 className='text-2xl font-bold mb-1 text-center'>
         {words.length} Words
       </h2>
+      <div className='text-sm text-center text-gray-500 mb-4 '>
+        Try familiar words first
+      </div>
       <div className='w-full grid grid-cols-1 sm:grid-cols-6 gap-2'>
         {words.map((word) => (
           <div
