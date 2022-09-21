@@ -32,7 +32,7 @@ export default function Example({ words, rank }) {
     <div className='mx-4 my-12'>
       <h2 className='text-2xl text-center font-bold mb-1'>Words to try</h2>
       <div className='text-sm text-center text-gray-500 mb-4 '>
-        Based on popularity of letters. Good for deducing.
+        Based on popularity of letters & good for deducing
       </div>
       <div className='w-full grid grid-cols-1 sm:grid-cols-6 gap-2'>
         {tryWords.slice(0, 6).map((word) => (
