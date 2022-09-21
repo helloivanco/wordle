@@ -138,7 +138,7 @@ export default function Home() {
                     e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
                   )
                 }
-                value={character0}
+                value={character0.toUpperCase()}
                 className='w-12 h-12 font-bold mx-2 text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
@@ -153,7 +153,7 @@ export default function Home() {
                     e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
                   )
                 }
-                value={character1}
+                value={character1.toUpperCase()}
                 className='w-12 h-12 font-bold mx-2 text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
@@ -169,7 +169,7 @@ export default function Home() {
                     e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
                   )
                 }
-                value={character2}
+                value={character2.toUpperCase()}
                 className='w-12 h-12 font-bold mx-2 text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
@@ -184,7 +184,7 @@ export default function Home() {
                     e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
                   )
                 }
-                value={character3}
+                value={character3.toUpperCase()}
                 className='w-12 h-12 font-bold mx-2 text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
@@ -199,7 +199,7 @@ export default function Home() {
                     e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
                   )
                 }
-                value={character4}
+                value={character4.toUpperCase()}
                 className='w-12 h-12 font-bold mx-2 text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
@@ -220,7 +220,7 @@ export default function Home() {
                 onChange={(e) =>
                   setContains(e.target.value.replace(/[^a-z]/gi, ''))
                 }
-                value={contains}
+                value={contains.toUpperCase()}
                 className='block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
@@ -240,7 +240,7 @@ export default function Home() {
                 onChange={(e) =>
                   setNotContains(e.target.value.replace(/[^a-z]/gi, ''))
                 }
-                value={notContains}
+                value={notContains.toUpperCase()}
                 className='block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
             </div>
