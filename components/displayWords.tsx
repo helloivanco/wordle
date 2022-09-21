@@ -11,7 +11,7 @@ export default function Example({ words }) {
         {words.map((word) => (
           <div
             key={word}
-            className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-green-500 focus-within:ring-offset-2 hover:border-gray-400'>
+            className='relative flex items-center space-x-3 rounded-lg border border-green-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-green-500 focus-within:ring-offset-2 hover:border-gray-400'>
             <div className='flex-shrink-0'>
               <div className='h-10 w-10 font-bold rounded-full bg-green-100 flex items-center justify-center'>
                 {word[0].toUpperCase()}

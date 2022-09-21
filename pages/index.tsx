@@ -37,34 +37,31 @@ export default function Home() {
     console.log('key', event.key);
   };
 
+  const filterWords = (filter: string) => {
+    let exp = '';
+    for (let i in filter as any) {
+      exp += `(?=.*${filter[i]})`;
+    }
+    let regex = new RegExp('^' + exp + '.', 'g');
+    return Words.filter((word) => word.match(regex));
+  };
+
+  const inverseFilterWords = (filter: string) => {
+    let exp = '';
+    let regex = new RegExp(`\\b\\w*[${filter}]\\w*\\b`, 'g');
+    return Words.filter((word) => !word.match(regex));
+  };
+
   useEffect(() => {
     if (contains.length > 0) {
-      setWords(
-        words.filter((word) => {
-          for (let i = 0; i < contains.length; i++) {
-            if (!word.includes(contains[i])) {
-              return false;
-            }
-          }
-          return true;
-        })
-      );
+      setWords(filterWords(contains));
     }
-    console.log('Updating contaings');
+    console.log('Updating contains');
   }, [contains, updated]);
 
   useEffect(() => {
     if (notContains.length > 0) {
-      setWords(
-        words.filter((word) => {
-          for (let i = 0; i < notContains.length; i++) {
-            if (word.includes(notContains[i])) {
-              return false;
-            }
-          }
-          return true;
-        })
-      );
+      setWords(inverseFilterWords(notContains));
     }
     console.log('Updating notContains');
   }, [notContains, updated]);
@@ -107,7 +104,9 @@ export default function Home() {
     <>
       <h1 className='flex justify-center items-center text-5xl font-mono font-bold text-green-500 text-center py-6 bg-green-200'>
         <img src='/ring.png' className='w-14' />
-        <div className='ml-4'>Wordle Helper</div>
+        <a href='/'>
+          <div className='ml-4'>Wordle Helper</div>
+        </a>
         <a
           href='https://github.com/hellopaidco/wordle'
           target={'_blank'}
@@ -254,11 +253,23 @@ export default function Home() {
                 name='notcontains'
                 id='notcontains'
                 onKeyDown={handleKeyDown}
-                onChange={(e) =>
+                onChange={(e) => {
+                  for (let i in e.target.value as any) {
+                    for (let character in characters) {
+                      if (e.target.value[i] === characters[character]) {
+                        return;
+                      }
+                    }
+                    for (let contain in contains as any) {
+                      if (e.target.value[i] === contains[contain]) {
+                        return;
+                      }
+                    }
+                  }
                   setNotContains(
                     e.target.value.replace(/[^a-z]/gi, '').toLowerCase()
-                  )
-                }
+                  );
+                }}
                 value={notContains.toUpperCase()}
                 className='block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
               />
