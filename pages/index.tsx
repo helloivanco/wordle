@@ -135,7 +135,10 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
                   setCharacter0(
-                    e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
+                    e.target.value
+                      .replace(/[^a-z]/gi, '')
+                      .slice(0, 1)
+                      .toLowerCase()
                   )
                 }
                 value={character0.toUpperCase()}
@@ -150,7 +153,10 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
                   setCharacter1(
-                    e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
+                    e.target.value
+                      .replace(/[^a-z]/gi, '')
+                      .slice(0, 1)
+                      .toLowerCase()
                   )
                 }
                 value={character1.toUpperCase()}
@@ -166,7 +172,10 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
                   setCharacter2(
-                    e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
+                    e.target.value
+                      .replace(/[^a-z]/gi, '')
+                      .slice(0, 1)
+                      .toLowerCase()
                   )
                 }
                 value={character2.toUpperCase()}
@@ -181,7 +190,10 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
                   setCharacter3(
-                    e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
+                    e.target.value
+                      .replace(/[^a-z]/gi, '')
+                      .slice(0, 1)
+                      .toLowerCase()
                   )
                 }
                 value={character3.toUpperCase()}
@@ -196,7 +208,10 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
                   setCharacter4(
-                    e.target.value.replace(/[^a-z]/gi, '').slice(0, 1)
+                    e.target.value
+                      .replace(/[^a-z]/gi, '')
+                      .slice(0, 1)
+                      .toLowerCase()
                   )
                 }
                 value={character4.toUpperCase()}
@@ -218,7 +233,9 @@ export default function Home() {
                 id='contains'
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
-                  setContains(e.target.value.replace(/[^a-z]/gi, ''))
+                  setContains(
+                    e.target.value.replace(/[^a-z]/gi, '').toLowerCase()
+                  )
                 }
                 value={contains.toUpperCase()}
                 className='block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
@@ -238,7 +255,9 @@ export default function Home() {
                 id='notcontains'
                 onKeyDown={handleKeyDown}
                 onChange={(e) =>
-                  setNotContains(e.target.value.replace(/[^a-z]/gi, ''))
+                  setNotContains(
+                    e.target.value.replace(/[^a-z]/gi, '').toLowerCase()
+                  )
                 }
                 value={notContains.toUpperCase()}
                 className='block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm'
