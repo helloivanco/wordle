@@ -1,14 +1,30 @@
-export default function Example({ words }) {
+import { memo, useState } from 'react';
+const displayWords = ({ words }) => {
+  const [showAllWords, setShowAllWords] = useState(false);
+  const [showText, setShowText] = useState('Show All');
+
+  const handleShowAllWords = () => {
+    setShowAllWords(!showAllWords);
+    showText === 'Show All' ? setShowText('Hide') : setShowText('Show All');
+  };
+
   return (
-    <div className='mx-4'>
-      <h2 className='text-2xl font-bold mb-1 text-center'>
-        {words.length} Words
+    <div className='mx-4 mb-12'>
+      <h2 className='flex items-center justify-center text-2xl font-bold mb-1 text-center'>
+        {words.length} Words{' '}
+        <div
+          className='ml-2 cusor-pointer text-sm text-gray-500'
+          onClick={(e) => {
+            handleShowAllWords();
+          }}>
+          {showText}
+        </div>
       </h2>
       <div className='text-sm text-center text-gray-500 mb-4 '>
         Try familiar words first
       </div>
       <div className='w-full grid grid-cols-1 sm:grid-cols-6 gap-2'>
-        {words.map((word) => (
+        {words.slice(0, !showAllWords ? 60 : words.length).map((word) => (
           <div
             key={word}
             className='relative flex items-center space-x-3 rounded-lg border border-green-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-green-500 focus-within:ring-offset-2 hover:border-gray-400'>
@@ -30,4 +46,6 @@ export default function Example({ words }) {
       </div>
     </div>
   );
-}
+};
+
+export default memo(displayWords);

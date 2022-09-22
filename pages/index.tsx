@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import { filterWords, inverseFilterWords } from 'utils/misc';
 import DisplayWords from '../components/displayWords';
-
 const TryWords = dynamic(() => import('../components/tryWords'), {
   ssr: false,
 });
@@ -33,35 +33,25 @@ export default function Home() {
       setTimeout(() => {
         setUpdated(!updated);
       }, 50);
+    } else {
+      setTimeout(() => {
+        setUpdated(!updated);
+      }, 50);
     }
+
     console.log('key', event.key);
-  };
-
-  const filterWords = (filter: string) => {
-    let exp = '';
-    for (let i in filter as any) {
-      exp += `(?=.*${filter[i]})`;
-    }
-    let regex = new RegExp('^' + exp + '.', 'g');
-    return Words.filter((word) => word.match(regex));
-  };
-
-  const inverseFilterWords = (filter: string) => {
-    let exp = '';
-    let regex = new RegExp(`\\b\\w*[${filter}]\\w*\\b`, 'g');
-    return Words.filter((word) => !word.match(regex));
   };
 
   useEffect(() => {
     if (contains.length > 0) {
-      setWords(filterWords(contains));
+      setWords(filterWords(Words, contains));
     }
     console.log('Updating contains');
   }, [contains, updated]);
 
   useEffect(() => {
     if (notContains.length > 0) {
-      setWords(inverseFilterWords(notContains));
+      setWords(inverseFilterWords(Words, notContains));
     }
     console.log('Updating notContains');
   }, [notContains, updated]);

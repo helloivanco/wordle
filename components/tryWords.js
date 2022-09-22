@@ -1,4 +1,5 @@
-export default function Example({ words, rank }) {
+import { memo } from 'react';
+const tryWords = ({ words, rank }) => {
   let tryWords = [];
   if (rank.length !== 0 || words.length !== 0) {
     let score = [];
@@ -56,4 +57,6 @@ export default function Example({ words, rank }) {
       </div>
     </div>
   );
-}
+};
+
+export default memo(tryWords);
